@@ -17,6 +17,7 @@ public class TestUserCRUD {
 				System.out.println("Choose option");
 				try {
 					switch (sc.nextInt()) {
+					
 					case 1:
 						System.out.println("Enter role , begin end date");
 						userDao.getSelectedUserDetails(sc.next(), Date.valueOf(sc.next()), Date.valueOf(sc.next()))
