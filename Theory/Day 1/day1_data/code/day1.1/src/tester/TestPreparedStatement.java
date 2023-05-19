@@ -1,12 +1,15 @@
 package tester;
+import static utils.DBUtils.openConnection;
+
 /*
  * Display complete name , reg date , reg amount for all 
  * users reged between 2 dates (Retrieve with IN params)
  */
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Scanner;
-
-import static utils.DBUtils.openConnection;
 
 
 public class TestPreparedStatement {
