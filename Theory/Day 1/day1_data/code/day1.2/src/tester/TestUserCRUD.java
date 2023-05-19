@@ -21,7 +21,7 @@ public class TestUserCRUD {
 					case 1:
 						System.out.println("Enter role , begin end date");
 						userDao.getSelectedUserDetails(sc.next(), Date.valueOf(sc.next()), Date.valueOf(sc.next()))
-								.forEach(System.out::println);
+						.forEach(System.out::println);
 						break;
 
 					case 0:
