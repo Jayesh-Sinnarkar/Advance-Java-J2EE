@@ -50,28 +50,30 @@ The GET request method -- safe(doesn't change state of the resource) & idempoten
 
 The GET request is used typically for getting static information from the server such as HTML document, images, and CSS files. 
 It can be used to retrieve dynamic information also by appending query string at the end of request URI.
+---------------------
 
-Query String
+
+Query String:
 
 Query string is used to pass additional request parameters along with the request. 
 
 Query string format
 
-URL?name1=value1&name2=value&name3=value3 ….
+URL?name1=value1&name2=value2&name3=value3 ….
 
 
 eg -- http://www.abc.com/test/login.jsp?userid=10&name=abc&age=25
+--------------------------------------------------------------------
 
-The POST request method
+The POST request method:-> The POST request method is typically used to access OR create new  dynamic resources. 
 
-The POST request method is typically used to access OR create new  dynamic resources. 
-
-POST request is used to 
+POST request is used to:
 1. send the large amount of data to the server. 
 2. upload files to servers 
 3. send serializable Java objects or raw bytes. 
+-------------------------------------------------
 
-GET Vs POST
+GET Vs POST:->
 
 1.
 GET request sends the request parameters as query string appended at the end of the request URL, whereas POST request sends the request parameters as part of the HTTP request body. 
@@ -89,8 +91,9 @@ use POST -- for changing some state on server(something like update)
 4. Some web servers limit the length of the URL.
 So if in GET request --  too many parameters are appended in query string and URL exceeds this length, some web servers might not accept the request. 
 For POST -- no such limitations.
-----------------
-Safe HTTP methods
+-------------------------------------
+
+Safe HTTP methods:->
 
 HTTP methods are considered safe if they do not alter the server state. So safe methods can only be used for read-only operations. 
 
@@ -99,9 +102,9 @@ eg :  GET, HEAD, OPTIONS and TRACE.
 In practice it is often not possible to implement safe methods in a way they do not alter any server state.
 
 eg :  a GET request might create log or  update statistic values or trigger a cache refresh on the server.
+--------------------------------------------------------------------------------------------------------------
 
-
-Idempotent HTTP methods
+Idempotent HTTP methods:->
 
 Idempotency means that multiple identical requests will have the same outcome. So it does not matter if a request is sent once or multiple times.
 
@@ -118,15 +121,15 @@ HTTP method overview
 
 The following table summarizes which HTTP methods are safe and idempotent:
 
-HTTP Method	Safe	Idempotent
-GET		Yes	Yes
-HEAD		Yes	Yes
-OPTIONS		Yes	Yes
-TRACE		Yes	Yes
-PUT		No	Yes
-DELETE		No	Yes
-POST		No	No
-PATCH		No	No
+HTTP Method	Safe		Idempotent
+GET			Yes		Yes
+HEAD			Yes		Yes
+OPTIONS		Yes		Yes
+TRACE		Yes		Yes
+PUT			No		Yes
+DELETE		No		Yes
+POST			No		No
+PATCH		No		No
  
 
 
