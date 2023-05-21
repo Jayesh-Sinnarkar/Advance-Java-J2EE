@@ -1,14 +1,14 @@
 #DB URL : jdbc:mysql://localhost:3306/advjava?#createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
 	
 # table
-create table users (id int primary key auto_increment,first_name varchar(20),last_name varchar(20),
+create table users2 (id int primary key auto_increment,first_name varchar(20),last_name varchar(20),
 email varchar(20) unique,password varchar(20),dob date,status boolean,role varchar(20));
 
 #DML
 
-insert into users values(default,'Rama','Kher','rama@gmail.com','ram#123','1999-1-1',0,'admin');
-insert into users values(default,'Shekhar','Patil','shekhar@gmail.com','shk#123','1992-10-20',0,'voter');
-insert into users values(default,'Medha', 'Khole','medha@gmail.com','mad$234','1990-11-21',0,'voter');
+insert into users2 values(default,'Rama','Kher','rama@gmail.com','ram#123','1999-1-1',0,'admin');
+insert into users2 values(default,'Shekhar','Patil','shekhar@gmail.com','shk#123','1992-10-20',0,'voter');
+insert into users2 values(default,'Medha', 'Khole','medha@gmail.com','mad$234','1990-11-21',0,'voter');
 
 #candidates table 
 create table candidates(id int primary key auto_increment,
