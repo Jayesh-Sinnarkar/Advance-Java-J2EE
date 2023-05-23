@@ -15,7 +15,7 @@ public class UserDaoImpl implements UserDao {
 		// get cn from db utils
 		cn = openConnection();
 		// pst1
-		pst1 = cn.prepareStatement("select * from users where email=? and password=?");
+		pst1 = cn.prepareStatement("select * from users2 where email=? and password=?");
 		System.out.println("user dao created...");
 	}
 

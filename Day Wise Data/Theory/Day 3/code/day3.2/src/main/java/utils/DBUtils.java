@@ -5,7 +5,7 @@ public class DBUtils {
 //write a method to open db connection
 	public static Connection openConnection() throws SQLException
 	{
-		String url = "jdbc:mysql://localhost:3306/advjava?useSSL=false&allowPublicKeyRetrieval=true";
+		String url = "jdbc:mysql://localhost:3306/advjava";//?useSSL=false&allowPublicKeyRetrieval=true
 		cn=DriverManager.getConnection(url, "root", "root");
 		return cn;
 	}

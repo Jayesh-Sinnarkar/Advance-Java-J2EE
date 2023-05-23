@@ -76,7 +76,7 @@ web.xml
 <classes> : .class
 <lib> : .jar
 
-2. root folder : src/main/webapp -- html , js, css , jsp
+2. root folder : src/main/webapp -- html , js, css , jsp: public
 
 3. src/main/java : java src files
 
