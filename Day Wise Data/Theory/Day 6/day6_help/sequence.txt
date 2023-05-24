@@ -1,0 +1,17 @@
+Lab status
+IPL /admin part of the voting assignment 
+E Book
+
+
+Revise
+Servlet complete life cycle with thread pool
+Web app listeners
+
+Enter JSP
+Refer to readme JSP
+What is it ?
+Why ?
+Life cycle
+Syntax
+
+Discuss JSP Assignment
