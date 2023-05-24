@@ -62,7 +62,7 @@ public class AddPlayerFormServlet extends HttpServlet {
 			pw.print("<h3 align='center'>Player Selection Form</h3>");
 			pw.print("<form action='validate' method='post'>");
 			pw.print("<h5>");
-			pw.print("Choose Team : <select name='teamAbbr'>");
+			pw.print("Choose Team : <select name='team_id'>");
 			for (Team team : allTeams)
 				pw.print("<option value='" + team.getTeamId() 
 				+ "'>" + team.getAbbrevation() + "</option>");

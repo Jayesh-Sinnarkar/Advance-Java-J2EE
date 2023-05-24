@@ -17,7 +17,7 @@ public class TeamDaoImpl implements TeamDao {
 		//open cn
 		cn=openConnection();
 		pst1=cn.prepareStatement("select team_id,abbrevation from teams");
-		pst2=cn.prepareStatement("selct * from teams where team_id=?");
+		pst2=cn.prepareStatement("select * from teams where team_id=?");
 		System.out.println("team dao created!");
 	}
 
@@ -32,16 +32,18 @@ public class TeamDaoImpl implements TeamDao {
 		return teams;
 	}
 	
-	public Team getTeam(String teamAbbr) throws SQLException
+	public Team getTeam(int team_id) throws SQLException
 	{
 		Team team=null;
-		pst2.setString(1,teamAbbr);
-		try(ResultSet rst=pst2.executeQuery())
+		System.out.println("team_id in getTeam:"+team_id);
+		pst2.setInt(1,team_id);
+		try(ResultSet rst2=pst2.executeQuery())
 		{
-			if(rst.next())
+			System.out.println("Query Executed for selecting team.");
+			if(rst2.next())
 			{
 				//int teamId, String name, String abbrevation, String owner, int maxAge, double battingAvg, int wicketsTaken
-				 team = new Team(rst.getInt(1), rst.getString(2),rst.getString(3),rst.getString(4),rst.getInt(5),rst.getDouble(6),rst.getInt(7));
+				 team = new Team(rst2.getInt(1), rst2.getString(2),rst2.getString(3),rst2.getString(4),rst2.getInt(5),rst2.getDouble(6),rst2.getInt(7));
 			}
 		}
 		

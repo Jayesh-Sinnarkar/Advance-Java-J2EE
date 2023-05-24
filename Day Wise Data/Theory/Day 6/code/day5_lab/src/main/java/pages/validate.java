@@ -67,8 +67,8 @@ public class validate extends HttpServlet {
 		int age = Period.between(dob.toLocalDate(), LocalDate.now()).getYears();
 		double battingAvg = Double.parseDouble(request.getParameter("avg"));
 		int wicketsTaken = Integer.parseInt(request.getParameter("wickets"));
-		String teamAbbr = request.getParameter("teamAbbr");
-		Team selectedTeam = teamDao.getTeam(teamAbbr);
+		int team_id = Integer.parseInt(request.getParameter("team_id"));
+		Team selectedTeam = teamDao.getTeam(team_id);
 		
 		if(selectedTeam.getBattingAvg()>battingAvg && selectedTeam.getWicketsTaken()>wicketsTaken && selectedTeam.getMaxAge()<age)
 		{
@@ -83,8 +83,10 @@ public class validate extends HttpServlet {
 			int no = player.insertPlayer(selectedPlayer); //(firstName, lastName, dob, battingAvg, wicketsTaken, teamId);
 			
 			if(no==1)
+			{
+				pw.print("<h3 align='center'>Player inserted sucessfully</h3>");
 				pw.print("<h3 align='center'>Player "+selectedPlayer+" inserted sucessfully</h3>");
-			else
+			}else
 				pw.print("<h3 align='center'>Could not update player in Database</h3>");
 
 			}
