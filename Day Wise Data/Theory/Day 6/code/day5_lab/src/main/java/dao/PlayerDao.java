@@ -1,10 +1,10 @@
 package dao;
 
-import java.sql.Date;
 import java.sql.SQLException;
+
+import pojos.Player;
 
 public interface PlayerDao {
 	
-	int insertPlayer(String firstName, String lastName, Date dob, double battingAvg, int wicketsTaken,
-			int teamId) throws SQLException;
+	int insertPlayer(Player player) throws SQLException;
 }

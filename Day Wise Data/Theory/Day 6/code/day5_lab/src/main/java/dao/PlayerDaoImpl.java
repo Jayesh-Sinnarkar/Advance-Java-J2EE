@@ -1,6 +1,9 @@
 package dao;
 
 import java.sql.*;
+
+import pojos.Player;
+
 import static utils.DBUtils.*;
 
 public class PlayerDaoImpl implements PlayerDao {
@@ -17,14 +20,13 @@ public class PlayerDaoImpl implements PlayerDao {
 
 
 	@Override
-	public int insertPlayer(String firstName, String lastName, Date dob, double battingAvg, int wicketsTaken,
-			int teamId) throws SQLException {
-		pst1.setString(1, firstName);
-		pst1.setString(2, lastName);
-		pst1.setDate(3, dob);
-		pst1.setDouble(4, battingAvg);
-		pst1.setInt(5, wicketsTaken);
-		pst1.setInt(6, teamId);
+	public int insertPlayer(Player player) throws SQLException {
+		pst1.setString(1, player.getFirstName());
+		pst1.setString(2, player.getLastName());
+		pst1.setDate(3, player.getDob());
+		pst1.setDouble(4, player.getBattingAvg());
+		pst1.setInt(5, player.getWicketsTaken());
+		pst1.setInt(6, player.getTeamId());
 		return pst1.executeUpdate();	
 	}
 	

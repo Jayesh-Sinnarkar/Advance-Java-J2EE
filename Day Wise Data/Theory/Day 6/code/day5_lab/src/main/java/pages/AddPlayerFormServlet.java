@@ -5,12 +5,14 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.TeamDaoImpl;
 import pojos.Team;
@@ -58,9 +60,9 @@ public class AddPlayerFormServlet extends HttpServlet {
 			List<Team> allTeams = teamDao.getAllTeams();
 			// dyn form generation
 			pw.print("<h3 align='center'>Player Selection Form</h3>");
-			pw.print("<form action='validate'>");
+			pw.print("<form action='validate' method='post'>");
 			pw.print("<h5>");
-			pw.print("Choose Team : <select name='team_id'>");
+			pw.print("Choose Team : <select name='teamAbbr'>");
 			for (Team team : allTeams)
 				pw.print("<option value='" + team.getTeamId() 
 				+ "'>" + team.getAbbrevation() + "</option>");
@@ -75,9 +77,10 @@ public class AddPlayerFormServlet extends HttpServlet {
 			pw.print("<h5>Wickets Taken <input type='number' name='wickets'/></h5>");
 			pw.print("<h5><input type='submit' value='Add Player'/></h5>");
 			pw.print("</form>");
-
+			
+			
 		} catch (Exception e) {
-			throw new ServletException("err in doGet " + getClass(), e);
+			throw new ServletException("err in doPost " + getClass(), e);
 		}
 	}
 

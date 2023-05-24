@@ -10,6 +10,8 @@ import pojos.Team;
 public class TeamDaoImpl implements TeamDao {
 	private Connection cn;
 	private PreparedStatement pst1, pst2;
+
+	
 	
 	public TeamDaoImpl() throws SQLException{
 		//open cn
@@ -30,10 +32,10 @@ public class TeamDaoImpl implements TeamDao {
 		return teams;
 	}
 	
-	public Team getTeam(int teamId) throws SQLException
+	public Team getTeam(String teamAbbr) throws SQLException
 	{
 		Team team=null;
-		pst2.setInt(1,teamId);
+		pst2.setString(1,teamAbbr);
 		try(ResultSet rst=pst2.executeQuery())
 		{
 			if(rst.next())
@@ -45,6 +47,8 @@ public class TeamDaoImpl implements TeamDao {
 		
 		return team;
 	}
+	
+	
 	public void cleanUp() throws SQLException
 	{
 		if(pst1 != null)
