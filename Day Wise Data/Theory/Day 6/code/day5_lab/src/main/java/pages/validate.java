@@ -26,6 +26,7 @@ import pojos.Team;
 public class validate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PlayerDaoImpl player;
+	Player selectedPlayer;
 	private TeamDaoImpl teamDao;
 	
 	
@@ -78,7 +79,7 @@ public class validate extends HttpServlet {
 		else {
 			int teamId = selectedTeam.getTeamId();
 			System.out.println("Team id is"+teamId);
-			Player selectedPlayer = new Player(firstName, lastName, dob, battingAvg, wicketsTaken, teamId);
+			selectedPlayer = new Player(firstName, lastName, dob, battingAvg, wicketsTaken, teamId);
 			
 			int no = player.insertPlayer(selectedPlayer); //(firstName, lastName, dob, battingAvg, wicketsTaken, teamId);
 			
@@ -90,7 +91,9 @@ public class validate extends HttpServlet {
 				pw.print("<h3 align='center'>Could not update player in Database</h3>");
 
 			}
-		
+			HttpSession hs = request.getSession();
+			hs.setAttribute("player",selectedPlayer);
+			
 			
 			
 		} catch (SQLException e) {
