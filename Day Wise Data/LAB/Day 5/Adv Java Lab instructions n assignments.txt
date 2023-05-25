@@ -17,6 +17,11 @@ TestPreparedStatement
 4. import day1.2 , in your new workspace.(Edit build path)
 Revise Layered application.
 
+
+
+
+
+---------------ASS1-------------------------
 5. You will have advjava db created in mysql 
 Solve, using DB layered approach(Tester, DAO , DBUtils ,POJO,DB)
 5.1 User login
@@ -27,6 +32,11 @@ O/P : login successful with user details or invalid message.
 i/p role
 
 
+
+
+
+
+---------------ASS2-------------------------
 
 Day 2
 0. Follow installation instructions from
@@ -60,6 +70,9 @@ Either use Mysql workbench or Mysql cmd line client
 4.1 Create a Java project (not a web project : day2.1_lab) with JDBC driver
 Copy from ""day2_data\day2_help\voting sql.txt"" , users2 table
 
+
+---------------ASS3-------------------------
+
 Solve : Voter signin 
 Steps
 1.Tables : users2 
@@ -67,7 +80,6 @@ Steps
 3 Create DBUtils: edit DB user name n pwd
 openConnection : 
 closeConnection
-
 4. DAO
 4.1 UserDao
 User  authenticateUser(String email,String pwd) throws SqlException
