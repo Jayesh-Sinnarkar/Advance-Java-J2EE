@@ -33,6 +33,7 @@ public class TestServlet extends HttpServlet {
 		response.setContentType("text/html");
 		// get PW
 		try (PrintWriter pw = response.getWriter()) {
+			
 			pw.print("<h4> Resp from a servlet , deployed using "
 					+ "@WebServlet anno " + LocalDateTime.now() + "</h4>");
 		}
