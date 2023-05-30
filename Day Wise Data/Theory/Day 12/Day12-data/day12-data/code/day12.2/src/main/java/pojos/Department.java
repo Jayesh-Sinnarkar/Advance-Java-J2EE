@@ -13,7 +13,7 @@ public class Department extends BaseEntity {
 	private String deptName;
 	// one to many
 	@OneToMany(mappedBy = "dept", cascade = CascadeType.ALL,
-			orphanRemoval = true /* , fetch = FetchType.EAGER */  )
+			orphanRemoval = true  , fetch = FetchType.EAGER   )
 	private List<Employee> emps = new ArrayList<>();
 
 	public Department() {

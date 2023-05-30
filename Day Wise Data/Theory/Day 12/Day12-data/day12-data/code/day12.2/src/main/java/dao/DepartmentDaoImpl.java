@@ -75,7 +75,9 @@ public class DepartmentDaoImpl implements DepartmentDao {
 	@Override
 	public List<Department> getAllDepartments() {
 		List<Department> depts = null;
-		String deptJpql = "select distinct d from Department d left  join fetch d.emps";
+		String deptJpql = "select distinct d from Department d left join fetch d.emps";
+		//String deptJpql = "select distinct d from Department d";
+
 		// get session from SF
 		Session session = getFactory().getCurrentSession();
 		// begin tx

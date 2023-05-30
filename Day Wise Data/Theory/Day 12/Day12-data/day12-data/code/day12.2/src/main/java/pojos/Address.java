@@ -23,9 +23,9 @@ public class Address extends BaseEntity {
 	private String zipCode;
 	//one-to-one , uni dir Address 1--->1 Employee
 	//owning side : Address (since FK)
-	@OneToOne
-	@JoinColumn(name="emp_id")
-	@MapsId
+	@OneToOne //Mand otherwise HD throws Mapping exception
+	@JoinColumn(name="emp_id")//optional: HB will provide default name
+	@MapsId //optional but recom to use shared PK bet Emp n address
 	private Employee owner;
 	public Address() {
 		System.out.println("in def ctor of "+getClass());
