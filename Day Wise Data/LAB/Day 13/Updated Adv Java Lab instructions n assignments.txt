@@ -1,0 +1,516 @@
+Day 1
+1. Confirm that MySql  DB is working fine , using cmd prompt OR mysql workbench
+
+2. Refer , to installation instructions , shared on 1st day of core Java.
+2.1 JDK version : JDK 11
+2.2 IDE : Eclipse STS 3.9.18
+2.3 Create NEW workspace , for advanced java.
+2.4 AS per the instructions : in "day1_data\day1_help\web server help\Updated steps in tomcat.txt", add Apache Tomcat web server.
+2.5 Confirm if it's starting properly , without any exceptions
+
+
+3. import day1.1 , in your new workspace.(Edit build path)
+Revise JDBC 
+TestStatement 
+TestPreparedStatement
+
+4. import day1.2 , in your new workspace.(Edit build path)
+Revise Layered application.
+
+5. You will have advjava db created in mysql 
+Solve, using DB layered approach(Tester, DAO , DBUtils ,POJO,DB)
+5.1 User login
+i/p : email n password
+O/P : login successful with user details or invalid message.
+
+5.2 Display all users under specified role , sorted as per reg amount.
+i/p role
+
+
+
+Day 2
+0. Follow installation instructions from
+installation help\Installation instructions for JDK n IDE.txt"
+Confirm JDK 11
+
+
+1. Have you already created a new workspace for Java EE ?
+If not : Create a new workspace for Java EE
+Follow steps from :
+Installation instructions for Tomcat.txt"
+Add Tomcat server to the workspace
+
+
+2. Extract Java EE docs from : "day1_data\day1_help\web_prog_prerequisites\softwares n docs\javaee-api-8.0-javadoc.jar"
+
+
+Hands on :
+3. Create a dynamic web project (day2_lab) , test HTML contents (index.html)
+3.1 Add a servlet , to be deployed using annotations
+
+
+Confirm complete servlet life cycle
+(by printing messages on the server console)
+
+Complete the following , with Lab Faculty's help.
+
+4. Use Mysql 8 DB.
+Either use Mysql workbench or Mysql cmd line client
+
+4.1 Create a Java project (not a web project : day2.1_lab) with JDBC driver
+Copy from ""day2_data\day2_help\voting sql.txt"" , users2 table
+
+Solve : Voter signin 
+Steps
+1.Tables : users2 
+2. POJOs : User (voting status : boolean)
+3 Create DBUtils: edit DB user name n pwd
+openConnection : 
+closeConnection
+
+4. DAO
+4.1 UserDao
+User  authenticateUser(String email,String pwd) throws SqlException
+4.2 Implementation class
+5. Write a tester for testing this
+
+
+Day 3
+1. import day3.1 to revise
+1.1 Servlet deployment n servlet API
+1.2 Servlet deployment using XML tags
+
+
+2. import day3.2 to revise
+2.1 Servlet JDBC integration
+Open login.html n trace entire flow.
+
+
+Day 4
+1. import day4.1 in your worspace , to revise
+Highlights
+1.1 Page Navigation : redirect
+1.2 Cookie based session tracking
+(Test it first with cookies enabled n then later by blocking the cookies)
+
+
+2. import day4.2 in your worspace , to revise
+Highlights
+1.1 Page Navigation : redirect  (SAME as earlier)
+1.2 HttpSession i/f  based session tracking
+(Test it first with cookies enabled n then later by blocking the cookies)
+
+3. import day4.3 in your worspace , to revise online case study solved so far.
+Highlights
+1.1 Page Navigation : redirect  (SAME as earlier)
+1.2 HttpSession i/f  based session tracking (SAME as earlier)
+(Test it first with cookies enabled n then later by blocking the cookies)
+1.3 Refer to init of LoginServlet
+Created DAOs here.
+1.4 In it's doPost : added daos under session scope(setAttribute)
+for re usability.
+You won't have to create dao instances in other pages(servlets)
+1.5 Refer to CandidateList page : for dynamically generated form.
+
+
+4. OPTIONAL assignment
+Complete admin part of the online voting
+
+OR 
+
+Refer to "day4_data\Servlet IPL assignment.png"
+Try to create a dynamic drop down list for IPL teams
+You will have to start from designing DB tables , POJOs, DAO n then the Servlet .
+
+
+
+
+
+Day 5
+0. day5.1 is going to be revised in the next step.
+So DO NOT import day5.1
+
+1. import day5.2 
+Edit web.xml , as per your DB  settings
+1.1 Revise : servlet config n init-params
+Highlights : complete voting case study , with user logged in as a voter
+ServlceConfig
+init params.
+Partially DB independent web application
+
+
+2. import day5.3
+Revise : RequestDispatcher's forward technique (IMPORTANT)
+
+3. import day5.4 
+Revise : RequestDispatcher's include technique
+
+4. OPTIONAL (can be done later)
+import "day5-data\day5_help\demo of config_vs_ctx\config_vs_ctx"
+To revise difference between config n context
+
+Hands on
+No New assignments 
+Complete entire pending work (either admin part of voting case study OR IPL )
+
+Refer to these diagrams (after the lab session , in self study time)
+1. refer to HttpSession internals
+2. refer to complete servlet life cycle
+3. refer : regarding ServletConfig n ServletContext readmes
+
+Day 6
+
+1. Revise JSP syntax
+1.1 import day6.2 , in your workspace.
+Open index.jsp n trace all the links , to revise
+JSP comments
+JSP scripting elements
+Simple JSP based assignment
+
+1.2 JSP based assignment (Mandatory for the practice of JSP basic syntax) 
+Do it with the help of Lab faculty
+Ref : "day6_data\day6_help\student admission JSP.png"
+
+2. MUST Complete IPL assignment , using servlets. (Do it with the help of Lab faculty)
+Refer : "day6-data\day6_help\IPL sql.txt" 
+DB tables : teams , players
+Copy your earlier working DBUtils
+You have to develop POJOs , DAOs, Servlets(dyn web pages) 
+I have already uploaded partial solution on g drive (day5-lab-data)
+Test it.
+
+
+Instructions
+1. refer to day5_lab 
+(uploaded yesterday on g drive)
+Understand it n continue with these steps
+Continuation of IPL case study
+
+1.1 What will be the sample URL after submitting "Add Player Form"?
+
+http://localhost:8080/day5_lab/validate?team_id=2&player_name=a&dob=2001-05-09&avg=67&wickets=10
+
+
+1.2 To get a specific team details , for the next validation page 
+Add a method in TeamDao
+
+Team getTeamDetails(int teamId) throws SQLException
+Add the implementation in TeamDaoImpl class
+
+1.3 Create PlayerDao , to add below method
+String addPlayer(Player newPlayer) throws SQLException
+Add the implementation in PlayerDaoImpl class
+
+Try n complete this much .
+
+
+Day 7
+No new assignments !
+
+1. import day7.1 in your workspace , to revise
+1.1 URL rewriting
+1.2 Centralized error handling in JSP
+1.3 page n include directive
+1.4 JSP actions : forward , include , param
+
+(After the lab session , please revise all of abover from , readme_jsp.txt)
+
+
+2. import day7.2 in your workspace , to revise
+2.1 The layered architecture
+JSP --Java Bean -- DAO (uses DBUtils) -- POJO --DB
+
+2.2 Refer to welcome page : login.jsp 
+n trace complete flow .
+
+3. MANDATORY requirement for tomorrow.
+Lab faculties , please help students here.
+3.1 Copy "day7-data\code\test_hibernate_basic" under your workspace folder.
+
+3.2 import test_hibernate_basic , as existing Maven project in your workspace.
+(Lab Faculties will demo this. You simply follow. )
+You will need internet connection here.
+Hibernate dependencies (jar files) will get downloaded from net, to your machine.
+Reference pic : "day7-data\hibernate maven dependencies.png"
+Your project SHOULD have all of these dependencies downloaded.
+I have not yet explained anything on Maven. Will be done later.
+Today just keep the JARs downloaded.
+
+4. After finishing earlier steps   , complete pending work.
+
+
+Day 8
+1. DO NOT import any of today's projects first.
+Since all of you are going to create hibernate project from scratch.
+
+1.1 Copy test_hibernate_basic , into day8_hibernate_lab
+Edit project name n artifact id
+
+1.2 Force update the project
+R Click on project --Maven --Update Project (Force update it!)
+
+1.3 If you are having problems still , in downloading the Maven hibernate dependencies , 
+Use Maven clean option(Take lab faculty's help)
+
+1.4 Worst case : delete maven <repository> n rebuild the same
+AVOID this !
+
+2. MANDATORY assignment , to be solved with the lab faculty help
+2.1 Confirm bootstrapping of hibernate project (SessionFactory creation with hibernate utils n tester)
+2.2 Create Student pojo 
+properties : 
+ studentId : Integer (PK) ,first name , last name,email,password,confirmPassword,course(enum), admission fees (double) ,dob : LocalDate , profilePic : byte[] 
+
+Add JPA annotations
+Add <mapping> entry
+Test proper creation of "students" table.
+Refer to our Employee POJO for annotations.
+
+3. MANDATORY assignment , to be solved with the lab faculty help
+Table : users2 
+Register new voter 
+create a new dynamic web project (day8_lab_web)
+JSP --JavaBean --(JDBC based )DAO --DBUtils--POJO 
+(You can copy from earlier DAO , POJO n utils Layers)
+YOu should write User Java bean from scratch
+Flow : welcome page  -- index.jsp 
+Add A link : Register new voter  (details to be added in : users2 table)
+register.jsp (registration form)
+--submit the form to process_reg_form.jsp
+Use JavaBean n DAO n insert the record in DB , for new user
+1 Validation rule : voter's age > 21
+
+Day 9
+1. import day9.1 in your workspace as existing maven project
+1.1 Modify hibernate.cfg.xml , as per your db username n password
+
+1.2 Force update the project
+R Click on project --Maven --Update Project (Force update it!)
+
+1.3 Revise create(save) , get , JPQL , with IN params , update operations , in 1st hour of the lab session.
+Tip : Revise it in a top down manner
+Open the testers (test cases) one by one n trace the entire flow.
+
+2. Mandatory assignment
+Continue with your : day8_hibernate_lab (where you already have Student POJO , hibernate utils n TestHibernate.java)
+DO NOT create a new project , un necessarily
+
+Solve this
+1. Student registration
+i/p : student details (first name , last name,email,password,confirmPassword,course(enum), admission fees (double) ,dob )
+o/p : Reg successful , with student id(auto generated from hibernate) 
+or failure mesg.
+
+2. Student login
+i/p : email , password
+o/p : login successful , with student details lifted from db
+or failure mesg.
+
+3. Get all students from a specific course
+i/p : course name
+o/p : display list of students from the course
+Hint : Course c=Course.valueOf(...);
+String jpql="select s from Student s where s.chosenCourse=:course";
+List<Student> students=session.createQuery(jpql,Student.class).setParameter("course",c).getResultList();
+
+4. Offer scholarship to a particular  student
+i/p : student id , scholarship amount
+o/p : in case of invalid id --error mesg
+in case of success : reduce admission fees by the scholarship amount n display student details
+
+
+Day 10
+
+1. import day10.1 to revise , Hibernate CRUD, bulk operations , JPA constructor expression,image handling
+
+2. import day10.2 to revise , introduction to 
+2.1 Inheritance : @MappedSuperclass
+2.2 one to many bi dir association between entities
+
+Try out as discussed Author  1<---->* Book
+
+3. Complete earlier pending work.
+
+
+Day 11
+1. Check if you have day10_lab (your own project, with Author n Book)
+If yes continue with the same. 
+If not import day10_lab , from day10_data.
+
+Revise : mappedBy
+Add : cascading , orphan removal , helper methods to add/remove child
+
+Solve 
+1.1 Add Author with 2 books
+i/p : author details
+2 book details
+Confirm cascading
+(1 rec in authors + 2 recs in books table should be inserted : cascade on save 
++ FKs auto assigned)
+
+1.2 Delete author details
+i/p : author id
+(author n book recs should be deleted : This will confirm cascade on delete)
+
+1.3 Add only author details
+i/p : author details
+(1 rec in authors table : inserted)
+
+1.4 Publish a new book for specified author
+i/p : author email (unique)
+1 book details
+(1 rec in books table : inserted + FK auto assigned)
+
+
+1.5 Display author details
+i/p : email
+Try to display author details , it should work with correct email.
+Try to display associated book  details , it should throw , which exception ?
+How will you fix it ?
+(Later we will use join)
+Today simply try with eager fetch type
+
+
+1.6 Remove book from specific author
+i/p : author id n book id
+
+
+2. In individual labs :
+Integrate web app + hibernate
+(import template project : web_maven_hibernate)
+I hope it's already done!
+Layers : JSP --Java Bean --Hibernate based DAO --HibernateUtils --Entities --DB
+
+Solve :
+Assume you already have the author rec inserted in DB
+Add a book to existing author
+index.jsp --> add_book.jsp --> process_form.jsp --> status.jsp
+(validation rule : publish date must be in the current year)
+
+add_book.jsp : a form 
+i/ps :author email , book title , book publish date
+
+status.jsp : should display the status (success / failure)
+
+Think : When will you like to load hibernate frmwork (connection pool . SF ) , at web app dep time OR after 1st clnt request ?
+
+How will you achieve it ?
+Will be discussed in the lab.
+
+
+Day 12
+
+NO new mandatory assignments
+Let's revise entity -entity associations today. Value types tomorrow!
+
+1. import day12.1 , to revise 
+session.get vs session.load
+
+2. import day12.2 , to revise 
+one-one : uni dir mapping
+many-many : bi dir mapping
+
+Above  will be done in a combined  lab.
+
+
+Optional : for practice
+
+1. Assign address to existing emp
+i/p : emp id , adr details(Address adr)
+Hint : session.get(empId) --> chk null --not null : persistent : emp
+adr.setOwner(emp);
+session.persist(adr);
+commit
+
+
+2. Add new emp + adr details
+i/p : emp dtls(emp) + adr dtls(adr)
+Hint : 
+session.persist(emp);
+adr.setOwner(emp);
+session.persist(adr);
+commit
+3. Get adr details of a specific emp
+i/p : emp email
+HInt : jpql : emp jpql -- getSingleResult --
+--email : valid (emp : persistent)
+session.get(adr class , emp.getId()) -- null => adr not yet assigned
+else --print adr
+
+4. Get all emps from a specific city
+i/p : city
+jpql =select e from Address a join a.owner e where a.city=:city
+
+5. Remove emp details
+i/p : emp email
+Hint : emp jpql : emp persistent
+get adr persistent(session.get)
+session.delete(adr);
+session.delete(emp);
+
+
+
+Later practice many-many also.
+
+1. Launch new project
+i/p : project details
+
+2. Assign emp to the project
+i/p : project id , emp id
+
+3. Remove emp from the project
+i/p : project id , emp id
+
+4. Cancel Project
+i/p : project id or title 
+
+Day 13
+
+1. Continue with test_spring project (Check Maven dependencies : should show spring n hibernate JARs)
+1.1 Copy dependent n dependency packages , under src/main/java
+(These are spring bean classes : to be managed by SC)
+
+1.2. Create a configuration file (spring bean configuration) for the following
+test transport : prototype
+http transport : singleton n lazy
+soap transport : singleton n eager
+atm impl bean : prototype , using setter based dependency technique , to inject "http" transport layer.
+
+1.3 Create a tester , to
+Launch SC , using   xml based instructions , placed in run time classpath (src/main/resources)
+
+Make 3 demands (getBean) to get ATM bean/s
+Invoke B.L (deposit : 1000)
+
+Observe n conclude
+
+2. Play with scopes , loading policies , to understand spring bean life cycle
+
+3. Add 2 more  dependencies to ATM bean
+3.1 cash : double --constructor based D.I
+3.2 CustomerNotificationService -- setter based D.I
+Implementations : EmailNotification , SMSNotification
+3.3 Tranport Layer as earlier
+
+Modify bean config file for the following
+cash : 5,00,000
+EmailBased notification 
+http transport layer , to inform the bank
+
+4. After completing spring based above tasks , 
+complete Day13 practice tasks (one-one n many-many)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
