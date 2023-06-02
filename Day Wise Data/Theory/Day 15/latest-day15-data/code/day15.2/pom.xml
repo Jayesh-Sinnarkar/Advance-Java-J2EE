@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.developers</groupId>
-	<artifactId>day15.1</artifactId>
+	<artifactId>day15.2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>day15.1</name>
+	<name>day15.2</name>
 	<description>Maven based Dyn web project for Spring MVC Hibernate w/o
 		Spring boot</description>
 	<properties>
@@ -28,12 +28,12 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.0.0</version>
 				<configuration>
-					<warName>day15.1</warName>
+					<warName>day15.2</warName>
 				</configuration>
 			</plugin>
 		</plugins>
 
-		<finalName>day15.1</finalName>
+		<finalName>day15.2</finalName>
 	</build>
 	<dependencies>
 		<dependency>
