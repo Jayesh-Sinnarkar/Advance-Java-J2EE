@@ -13,15 +13,23 @@ public class Author extends BaseEntity {
 	@Column(name="email_id", length=30, unique=true)
 	private String email;
 	//One to many
-	@OneToMany(mappedBy="writer")
+	@OneToMany(mappedBy="writer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Book> books = new ArrayList<>();
 	
 	
-	//one to many
+	//def const
 	public Author()
 	{
 		
 	}
+	
+	// param const
+	public Author(String name, String email) {
+		this.name = name;
+		this.email = email;
+	}
+
+
 	public String getName() {
 		return name;
 	}
@@ -47,4 +55,15 @@ public class Author extends BaseEntity {
 		return "Author [Id="+getId()+"name=" + name + ", email=" + email + "]";
 	}
 	
+	public void addBook(Book b)
+	{
+		books.add(b);
+		b.setWriter(this);
+	}
+	
+	public void removeBook(Book b)
+	{
+		books.remove(b);
+		b.setWriter(null);
+	}
 }

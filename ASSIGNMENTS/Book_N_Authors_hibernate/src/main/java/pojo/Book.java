@@ -1,5 +1,7 @@
 package pojo;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -10,6 +12,8 @@ import javax.persistence.Table;
 public class Book extends BaseEntity {
 	@Column(length=100, unique=true)
 	private String title;
+	@Column(name="published_date")
+	private Date publishDate;
 	//many to one
 	@ManyToOne
 	private Author writer;
@@ -19,6 +23,12 @@ public class Book extends BaseEntity {
 		
 	}
 	
+	//param constructor
+	public Book(String title) {
+		
+		this.title = title;
+	}
+
 
 	public String getTitle() {
 		return title;
