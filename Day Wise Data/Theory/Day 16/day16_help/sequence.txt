@@ -1,0 +1,45 @@
+1. Create Spring boot project from scratch : for revision
+Refer : day15-data\day15_help\spring boot\spring-boot-steps.txt
+
+2. As you have noticed , whenever you create new spring boot project from scratch , you need an internet connection , even when all the dependencies are already downloaded.
+Why : STS tries to connect to start.spring.io n creates a project.
+So in the absence of the net connection , can we continue by copying the template project ?
+Yes !
+
+3. Copy DepartmentController , Service n DAO layer
+Run to see the problem.
+Understand n fix the problem
+Solution : Replace hibernate's native API (org.hibernate) by JPA
+(refer : "day15-data\day15_help\spring boot\diagrams\jpa-entitymgr-session-layers.png")
+
+4. Enter Spring Data JPA
+Refer : "day16-data\day16_help\Spring Data JPA.txt"
+
+-------------------Pending -----------------
+
+5. Enter Spring Boot Testing
+Unit testing of DAO layer
+Class level annotations over Test class
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = Replace.NONE)
+=> DO NOT replace the actual DB by any test db.
+If you need to disable the rollback @ end of the test case , add 
+@RollBack(false) : over the test method
+
+6. Solve 
+6.1 Emp signin
+
+7. Lombok library
+
+
+
+
+
+
+
+
+
+
+insert into emp_adr values(1,'line11','line12','Pune','India','MH','411001');
+insert into emp_adr values(2,'line21','line22','Mumbai','India','MH','567890');
+

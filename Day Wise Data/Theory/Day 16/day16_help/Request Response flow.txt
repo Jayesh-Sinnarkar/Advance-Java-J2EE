@@ -1,0 +1,8 @@
+Request Response flow
+1. 1st request to the web site : 
+Req : http://host:port/day16.1/
+Resp : index.jsp
+
+2.After clnt selects a dept : 
+http://localhost:8080/day16.2/emp/list?selectedDept=2
+Resp : emp_list.jsp(routed through Spring MVC frmwork)
