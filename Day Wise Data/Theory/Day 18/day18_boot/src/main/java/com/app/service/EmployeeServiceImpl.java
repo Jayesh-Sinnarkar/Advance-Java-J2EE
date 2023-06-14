@@ -45,8 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public String removeEmpDetails(Long empId) {
-		Employee employee = empRepo.findById(empId)// if invalid empID -> returns empty Optional 
-				//if sucess -> returns populated emp holder
+		Employee employee = empRepo.findById(empId)
 				.orElseThrow(() -> new ResourceNotFoundException("Invalid emp id !!!!!"));
 		// => id found!
 		empRepo.delete(employee);

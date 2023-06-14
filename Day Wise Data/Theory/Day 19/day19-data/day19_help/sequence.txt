@@ -1,0 +1,210 @@
+0. spring_boot_ems  
+many-to-many : concurrent modification exception : issue solved
+(Ref : Emp service impl : delete emp details)
+
+validation issue : day18_boot_lab
+
+1. Revise 
+
+1.1 refer to : REST simplified.txt
+Diag : Full Stack Overview (draw the diagram)
+
+
+1.2 Readme : RestController vs MVC Controller n Annotations.txt
+Revise annotations , including @CrossOrigin
+Link : https://reflectoring.io/complete-guide-to-cors/
+
+1.3 Revise Spring boot validations n centralized / global exception handling
+Understand : @RequestBody @Valid Employee meaning
+
+2. Testing
+More Practice of Spring Data JPA along with Unit testing with spring boot.
+(refer : regarding Spring Data JPA)
+Ref : https://docs.spring.io/spring-data/jpa/docs/current/reference/html/
+
+2.0 DAO layer test
+For adding users in the DB
+(for setting up the data in spring-boot-aop project)
+DB : advjava2 
+Table : users
+
+
+2.1 DAO layer test
+Test Emp sign in using a test case.
+Spring boot , has inherent supprt for testing .
+Meaning , it has implicitly added spring boot starter for testing.
+
+Unit Testing of the DAO layer 
+Class level annotations over Test class
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = Replace.NONE)
+=> DO NOT replace the actual DB by any test db.
+If you need to disable the rollback @ end of the test case , add 
+@RollBack(false) : over the test method
+
+Method level annotation for the JUnit testing 
+@Test
+Use assertions.
+
+2.2 Integration testing 
+ Write Service Layer test cases
+Class level annotation : @SpringBootTest 
+
+eg : 
+1. find out users by specific role
+find out users by reg date between start date n end date
+
+2. Find all emps joined after a specific date and from specific department
+URL : http://host:port/employees/date/2020-1-1/dept/rnd , method =GET
+eg : List<Emp> findByJoinDateAfterAndDepartment(LocalDate dt,String dept)
+
+3. Lab work : Find Emps , drawing salary between a range
+
+4. Lab work : find all emps having lastname containing some keyword
+
+3.3 Custom Query Methods
+If you can't solve the requirement using inherited methods or finder methods , you can use custom query methods
+How  ?
+Can inject JPQL using @Query annotations n can pass named IN param using @Param .
+Simpler replacement of named IN param , will be positional IN params.
+Solve : Get emp complete names drawing salary > specific salary
+
+
+4. Spring AOP
+Before AOP : 
+
+Regarding logging framework in Java
+
+Spring Boot being extremely  helpful framework , it allows us to forget about the majority of the configuration settings, many of which it opinionatedly auto-configures.
+
+In the case of logging, we don't have to explicitly import it's starter , since a starter, like our spring-boot-starter-web, depends on spring-boot-starter-logging, which already pulls in spring-jcl for us.
+
+(Jakarta Commons Logging API (JCL) is the only mandatory external dependency for Spring w/o boot)
+
+When using starters, Logback is used for logging by default.
+
+eg : different logging levels
+Add one field in the Controller class :
+Logger logger = LoggerFactory.getLogger(LoggingController.class);
+OR use Lombok annotation
+@Slf4j : at the class level -- It will auto inject a Logger in the field : log
+
+eg : 
+@RestController
+@Slf4j
+public class LoggingController {
+//    Logger logger = LoggerFactory.getLogger(LoggingController.class);
+
+    @RequestMapping("/")
+    public String index() {
+//it's in asc manner : logging levels
+        log.trace("A TRACE Message");
+        log.debug("A DEBUG Message");
+        log.info("An INFO Message");
+        log.warn("A WARN Message");
+        log.error("An ERROR Message");
+
+        return "Testing logging here....";
+    }
+}
+
+Default setting in application.properties file : 
+logging.level.root=INFO 
+eg : logging.level.org.springframework.orm.hibernate5=DEBUG
+logging.level.com.app.service=DEBUG
+
+Ref project for AOP : spring-boot-aop
+monolithic web app, having JSP based view layer.
+Exam objective : readme_aop.txt , ref project
+
+
+
+
+5. Spring Security
+Enter Spring security
+Understand spring security architecture
+(refer to spring security help)
+2.1 Servlet Filters overview (filter help)
+2.2 servletfilter-1 , servletfilter-2
+2.3 spring security architecture diagram
+2.4 detailed-flow diagram 
+(readme : Spring security flow)
+
+Draw a detailed diagram(Refer : "
+
+2.4 Continue to in mem based authentication
+2.5 Replace it by DB based authentication
+
+Copy User entity from ready code
+
+
+(refer : Regarding Spring Security)
+
+
+
+
+
+
+
+Project Tips : 
+
+1. If you see json response ,containing null or empty values 
+
+How to exclude null or absent values ?
+You can add at the POJO class level ,
+@JsonInclude(Include.NON_EMPTY)
+You can check other options also.
+
+2. How to control the property/field access during ser/de-serial
+@JsonProperty(access = Access.WRITE_ONLY) : property/field will be ignored during serialization
+@JsonProperty(access = Access.READ_ONLY) :  property/field will be ignored during de serialization
+
+3.eg :  User Registration , in shopping cart scenario
+Creating an empty cart n associate it with user.
+
+Problem : In case of bi-dir association , jackson will cause the recursion, during serialization(java--> json)
+
+Solution : How to tell SC using Jackson , to skip the properties
+Add field level annotation
+@JsonIgnoreProperties(name of the prop as it appears in the opposite side)
+More Details : 
+eg : User 1<----->1 Cart
+Problem : Infinite recursion (stack overflow !!!!!!!!!!!!!!)
+Cause : Jackson (converter) tries to serialize Cart object , during the ser. of User obj.
+AND
+Jackson (converter) tries to serialize User object , during the ser. of Cart obj.
+Soln : 
+In User entity, add 
+@JsonIgnorePropeties(value="cartOwner")
+private ShoppingCart cart;
+
+In ShoppingCart entity
+@JsonIgnorePropeties(value="cart")
+private User cartOwner;
+
+Same problem n solution for any bi-dir relationship.
+
+OR use DTO solution (i.e DO NOT expose the entities for data exchange between REST client n server)
+As a standard design practice , do not expose entities directly to the REST client
+(i.e DO not return them from the RestController)
+Instead use DTO (data transfer object) , to separate entities from resources to be shared with the clnts.
+eg : Send User DTO as  resp , instead of User entity.
+
+
+
+
+
+Good Links
+1. https://www.javainuse.com/devOps/docker/docker-jar
+2. https://repo1.maven.org/maven2/org/springframework/spring-core/5.3.25/
+3. https://repo1.maven.org/maven2/org/springframework/boot/spring-boot/2.7.8/
+4. https://repo1.maven.org/maven2/org/springframework/data/spring-data-jpa/2.7.7/
+5. https://spring.io/projects/spring-data-jpa#learn
+6. https://docs.spring.io/spring-data/jpa/docs/2.7.7/reference/html/
+
+
+
+Image handling related 
+Modifiy Tomcat version
+<tomcat.version>9.0.64</tomcat.version>
+

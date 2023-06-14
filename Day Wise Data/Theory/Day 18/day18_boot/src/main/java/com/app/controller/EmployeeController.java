@@ -69,7 +69,6 @@ public class EmployeeController {
 	public ApiResponse deleteEmpDetails(@PathVariable Long empId) {
 		System.out.println("in del emp details " + empId);
 		try {
-			
 			// invoke service layer method
 			return new ApiResponse(empService.removeEmpDetails(empId));
 		} catch (RuntimeException e) {

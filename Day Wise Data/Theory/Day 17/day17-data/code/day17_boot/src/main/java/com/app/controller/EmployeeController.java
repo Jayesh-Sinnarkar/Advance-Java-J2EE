@@ -43,7 +43,6 @@ public class EmployeeController {
 	@PostMapping
 	public Employee addNewEmpDetails(@RequestBody Employee newEmp)
 	{
-		
 		System.out.println("in add emp "+newEmp);//newEmp : transient
 		return empService.addEmpDetails(newEmp);
 	}
